@@ -21,10 +21,10 @@ metadata:
 spec:
   tls:
     - hosts:
-      - brewz-upward-gator.labs.f5demos.com
+      - brewz-light-oryx.labs.f5demos.com
       secretName: xc-lb-lab-tls-secret
   rules:
-    - host: brewz-upward-gator.labs.f5demos.com
+    - host: brewz-light-oryx.labs.f5demos.com
       http:
         paths:
           - path: /

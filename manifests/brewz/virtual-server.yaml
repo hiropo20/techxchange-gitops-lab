@@ -4,7 +4,7 @@ kind: VirtualServer
 metadata:
   name: brewz-vs
 spec:
-  host: brewz-upward-gator.labs.f5demos.com
+  host: brewz-light-oryx.labs.f5demos.com
   tls:
     secret: brewz-tls
   upstreams:
@@ -29,17 +29,8 @@ spec:
     - name: checkout
       service: checkout
       port: 8003
-    - name: spa-dark
-      service: spa-dark
-      port: 80
   routes:
     - path: /
-      matches:
-        - conditions:
-          - cookie: "app_version"
-            value: "dark"
-          action:
-            pass: spa-dark
       action:
         pass: spa
     - path: /api
@@ -47,16 +38,6 @@ spec:
         - name: rate-limit-policy
       action:
         pass: api
-      errorPages:
-        - codes: [404]
-          return:
-            code: 404
-            type: application/json
-            body: |
-              {\"msg\": \"Could not find the resource!\"}
-            headers:
-              - name: x-debug-original-status
-                value: ${upstream_status}
     - path: /api/inventory
       action:
         proxy:

@@ -3,15 +3,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nic
-  namespace: upward-gator
+  namespace: light-oryx
 spec:
   project: default
   source:
     path: charts/nginx-plus-ingress
-    repoURL: https://github.com/hiropo20/techxchange-gitops-lab.git
+    repoURL: https://github.com//techxchange-gitops-lab.git
     targetRevision: HEAD
   destination:
-    namespace: upward-gator
+    namespace: light-oryx
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
